@@ -92,6 +92,8 @@ function copy() {
 
 <template>
   <h1>My Plan</h1>
+  <p>A quick way to create a note to leave with someone you trust for them to give to emergency services when something
+    goes wrong in the outdoors.</p>
   <div class="form">
     <div class="property">
       <label for="leader">Leader:</label>
