@@ -54,7 +54,7 @@ Finish Point: ${finish.value} (Grid Reference: ${finishGrid.value})
 
 Route: ${route.value}
 
-ETA back at car: ${Date(eta.value).toLocaleString()}
+ETA back at car: ${new Date(eta.value).toLocaleString()}
 
 ${kitList.value}
 `;
@@ -78,6 +78,10 @@ function reset() {
 function print() {
   let text = `Print Date: ${Date().toLocaleString()}\n\n` + generateText();
   let printWindow = window.open('', '', 'width=600,height=600');
+  if (!printWindow) {
+    alert('Please allow popups for this site');
+    return;
+  }
   printWindow.document.write('<pre>' + text + '</pre>');
   printWindow.document.close();
   printWindow.print();
@@ -122,7 +126,7 @@ function copy() {
     </div>
     <div class="property">
       <label for="finish">Finish Point:</label>
-      <input type="text" id="finish" name="finish" value="Same as start point." v-model="finish">
+      <input type="text" id="finish" name="finish" v-model="finish">
       <input type="text" id="finish-grid" name="finish-grid" placeholder="SX 1234 1234" v-model="finishGrid">
     </div>
     <div class="property long">
