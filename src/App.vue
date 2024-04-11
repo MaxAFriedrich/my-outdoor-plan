@@ -76,7 +76,7 @@ function reset() {
 }
 
 function print() {
-  let text = `Print Date: ${Date().toLocaleString()}\n\n`+generateText();
+  let text = `Print Date: ${Date().toLocaleString()}\n\n` + generateText();
   let printWindow = window.open('', '', 'width=600,height=600');
   printWindow.document.write('<pre>' + text + '</pre>');
   printWindow.document.close();
@@ -91,49 +91,50 @@ function copy() {
 </script>
 
 <template>
+  <h1>My Plan</h1>
   <div class="form">
-    <div>
+    <div class="property">
       <label for="leader">Leader:</label>
       <input type="text" id="leader" name="leader" v-model="leader">
     </div>
-    <div>
+    <div class="property">
       <label for="phone">Phone Number:</label>
       <input type="tel" id="phone" name="phone" v-model="phone">
     </div>
-    <div>
+    <div class="property">
       <label for="vehicle">Vehicle:</label>
       <input type="text" id="vehicle" name="vehicle" v-model="vehicle">
     </div>
-    <div>
+    <div class="property">
       <label for="leader">Party Size:</label>
       <input type="text" id="party-size" name="party-size" v-model="partySize">
     </div>
-    <div>
+    <div class="property">
       <label for="map">Map Used:</label>
       <input type="text" id="map" name="map" v-model="map">
     </div>
-    <div>
-      <label for="start">Start Point</label>
+    <div class="property">
+      <label for="start">Start Point:</label>
       <input type="text" id="start" name="start" placeholder="name" v-model="start">
       <input type="text" id="start-grid" name="start-grid" placeholder="grid-reference" v-model="startGrid">
     </div>
-    <div>
+    <div class="property">
       <label for="finish">Finish Point:</label>
       <input type="text" id="finish" name="finish" value="Same as start point." v-model="finish">
       <input type="text" id="finish-grid" name="finish-grid" placeholder="grid-reference" v-model="finishGrid">
     </div>
-    <div>
+    <div class="property long">
       <label for="route">Route:</label>
       <textarea id="route" name="route"
                 placeholder="Car Park > north to A > west to B > lunch at Grid Reference SX 1234 1234 > Return via same route > Car Park."
                 v-model="route"></textarea>
     </div>
-    <div>
+    <div class="property">
       <label for="eta">ETA back at car:</label>
       <input type="datetime-local" id="eta" name="eta" v-model="eta">
     </div>
-    <div>
-      <label for="kit">Kit</label>
+    <div class="property long">
+      <label for="kit">Kit/Notes:</label>
       <textarea id="kit-list" name="kit-list" placeholder="Kit List" v-model="kitList">First aid kit, map/compass, and shelter being carried.</textarea>
     </div>
   </div>
@@ -143,7 +144,7 @@ function copy() {
     <button @click="reset">Reset</button>
   </div>
   <div>
-    <h1>Usage</h1>
+    <h2>Usage</h2>
     <p>The edit that you make in the form will be saved to the URL. Therefore, you can bookmark the URL with some useful
       presets.</p>
     <p>You can then either send the url to someone (not recommended), copy the message and send it to them using a
