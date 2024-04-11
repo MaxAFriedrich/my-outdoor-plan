@@ -95,33 +95,33 @@ function copy() {
   <div class="form">
     <div class="property">
       <label for="leader">Leader:</label>
-      <input type="text" id="leader" name="leader" v-model="leader">
+      <input type="text" id="leader" name="leader" v-model="leader" placeholder="Joe Blogs">
     </div>
     <div class="property">
       <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" name="phone" v-model="phone">
+      <input type="tel" id="phone" name="phone" v-model="phone" placeholder="071234 56789">
     </div>
     <div class="property">
       <label for="vehicle">Vehicle:</label>
-      <input type="text" id="vehicle" name="vehicle" v-model="vehicle">
+      <input type="text" id="vehicle" name="vehicle" v-model="vehicle" placeholder="AB12 CDE">
     </div>
     <div class="property">
       <label for="leader">Party Size:</label>
-      <input type="text" id="party-size" name="party-size" v-model="partySize">
+      <input type="text" id="party-size" name="party-size" v-model="partySize" placeholder="5">
     </div>
     <div class="property">
       <label for="map">Map Used:</label>
-      <input type="text" id="map" name="map" v-model="map">
+      <input type="text" id="map" name="map" v-model="map" placeholder="OL 1">
     </div>
     <div class="property">
       <label for="start">Start Point:</label>
-      <input type="text" id="start" name="start" placeholder="name" v-model="start">
-      <input type="text" id="start-grid" name="start-grid" placeholder="grid-reference" v-model="startGrid">
+      <input type="text" id="start" name="start" placeholder="Car Park" v-model="start">
+      <input type="text" id="start-grid" name="start-grid" placeholder="SX 1234 1234" v-model="startGrid">
     </div>
     <div class="property">
       <label for="finish">Finish Point:</label>
       <input type="text" id="finish" name="finish" value="Same as start point." v-model="finish">
-      <input type="text" id="finish-grid" name="finish-grid" placeholder="grid-reference" v-model="finishGrid">
+      <input type="text" id="finish-grid" name="finish-grid" placeholder="SX 1234 1234" v-model="finishGrid">
     </div>
     <div class="property long">
       <label for="route">Route:</label>
