@@ -10,6 +10,18 @@ type Field = {
 }
 
 const fields: Ref<Array<Field>> = ref([
+  {
+    id: 'deadline',
+    friendlyName: 'Deadline Time',
+    value: new Date().toISOString().substring(0, 16),
+    displayType: 'datetime-local'
+  },
+  {
+    id: 'eta',
+    friendlyName: 'ETA back at car',
+    value: new Date().toISOString().substring(0, 16),
+    displayType: 'datetime-local'
+  },
   {id: 'leader', friendlyName: 'Leader', value: '', displayType: 'text', placeholder: 'Joe Blogs'},
   {id: 'phone', friendlyName: 'Phone Number', value: '', displayType: 'tel', placeholder: '071234 56789'},
   {id: 'vehicle', friendlyName: 'Vehicle', value: '', displayType: 'text', placeholder: 'AB12 CDE'},
@@ -37,12 +49,6 @@ const fields: Ref<Array<Field>> = ref([
     value: '',
     displayType: 'textarea',
     placeholder: 'Car Park > north to A > west to B > lunch at Grid Reference SX 1234 1234 > Return via same route > Car Park.'
-  },
-  {
-    id: 'eta',
-    friendlyName: 'ETA back at car',
-    value: new Date().toISOString().substring(0, 16),
-    displayType: 'datetime-local'
   },
   {
     id: 'kitList',
@@ -89,11 +95,22 @@ function print() {
 function copy() {
   let text = generateText();
   navigator.clipboard.writeText(text);
+  notify("Copied to clipboard");
 }
+
+function notify(message: string) {
+  notification.value = message;
+  setTimeout(() => notification.value = '', 5000);
+}
+
+const notification = ref("");
 
 </script>
 
 <template>
+  <div class="notification" v-show="notification!=''">
+    {{notification}}
+  </div>
   <h1>My Plan</h1>
   <p>A quick way to create a note to leave with someone you trust for them to give to emergency services when something
     goes wrong in the outdoors.</p>

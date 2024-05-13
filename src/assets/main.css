@@ -27,14 +27,14 @@ body {
     margin: 2rem auto
 }
 
-textarea{
+textarea {
     font: inherit;
     color: inherit;
     background: var(--bg-input);
     border: none;
     margin: .3rem;
     padding: .1rem;
-    width:75vw;
+    width: 75vw;
     min-height: 10rem;
 }
 
@@ -52,12 +52,12 @@ button {
     justify-content: space-between;
 }
 
-.long{
+.long {
     flex-direction: column;
     align-items: center;
 }
 
-input{
+input {
     font: inherit;
     color: inherit;
     background: var(--bg-input);
@@ -72,13 +72,27 @@ input{
     margin: 2rem 0
 }
 
+.notification {
+    background: var(--bg-highlight);
+    color: var(--color);
+    padding: 1rem;
+    margin: 1rem 10vw;
+    width: 80vw;
+    border-radius: .5rem;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
 @media (max-width: 600px) {
     .property {
         flex-direction: column;
         align-items: center;
     }
 
-    textarea{
+    textarea {
         width: 95vw;
     }
 }
