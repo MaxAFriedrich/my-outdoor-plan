@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import {type Ref, ref, watch} from 'vue';
 
+const notification = ref("");
+
 type Field = {
   id: string,
   friendlyName: string,
@@ -98,26 +100,34 @@ function copy() {
   notify("Copied to clipboard");
 }
 
+function getUrl() {
+  navigator.clipboard.writeText(window.location.href);
+  notify("Copied URL to clipboard");
+}
+
 function notify(message: string) {
   notification.value = message;
   setTimeout(() => notification.value = '', 5000);
 }
 
-const notification = ref("");
+
+function isShort(field: Field) {
+  return field.displayType !== 'textarea';
+}
 
 </script>
 
 <template>
   <div class="notification" v-show="notification!=''">
-    {{notification}}
+    {{ notification }}
   </div>
   <h1>My Plan</h1>
   <p>A quick way to create a note to leave with someone you trust for them to give to emergency services when something
     goes wrong in the outdoors.</p>
   <div class="form">
-    <div v-for="field in fields" :key="field.id">
+    <div v-for="field in fields" :key="field.id" :class="{property: isShort(field)}">
       <label :for="field.id">{{ field.friendlyName }}</label>
-      <input v-if="field.displayType != 'textarea'" :type="field.displayType" :id="field.id" v-model="field.value"
+      <input v-if="isShort(field)" :type="field.displayType" :id="field.id" v-model="field.value"
              :placeholder="field.placeholder">
       <textarea v-else :id="field.id" v-model="field.value" :placeholder="field.placeholder"></textarea>
     </div>
@@ -125,6 +135,7 @@ const notification = ref("");
   <div class="tools">
     <button @click="print">Print</button>
     <button @click="copy">Copy to Clipboard</button>
+    <button @click="getUrl">Copy Current URL</button>
     <button @click="reset">Reset</button>
   </div>
   <div>

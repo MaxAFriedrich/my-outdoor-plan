@@ -36,6 +36,7 @@ textarea {
     padding: .1rem;
     width: 75vw;
     min-height: 10rem;
+    resize: none;
 }
 
 button {
@@ -69,7 +70,13 @@ input {
 .property {
     display: flex;
     justify-content: space-between;
-    margin: 2rem 0
+    margin: 1rem 0;
+    max-width: 40ch;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
 }
 
 .notification {
