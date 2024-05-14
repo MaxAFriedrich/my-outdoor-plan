@@ -15,7 +15,7 @@ WHAT TO DO AT THE DEADLINE TIME - Do not delay in saving lives!
 2. If you do not get an answer, you need to call the emergency services NOW!
 3. Have this information in front of you and **DIAL 112**.
 4. The emergency operator is going to first ask you which service you require, if they are in:
-    a. The mountains or hills it will be MOUNTAIN RESCUE
+    a. The mountains or hills it will be POLICE then MOUNTAIN RESCUE
     b. At sea or along the coastline, including the land by the sea COASTGUARD
     c. For all other areas it will be the POLICE
 5. Tell them who you are and why you are calling:
