@@ -92,7 +92,7 @@ fields.value.forEach(field => {
     field.value = url.searchParams.get(field.id) || field.value;
 });
 
-watch(fields, () => {
+watch(() => fields.value.map(field => field.value), () => {
     let url = new URL(window.location.href);
     fields.value.forEach(field => {
         url.searchParams.set(field.id, field.value);
