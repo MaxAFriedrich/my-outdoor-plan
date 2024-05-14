@@ -7,6 +7,8 @@ I am going on a walk and I would like you to have this information in case I don
 
 I will send you a message once I am back to let you know that I am safe.\n\n`;
     const end = `
+
+
 WHAT TO DO AT THE DEADLINE TIME - Do not delay in saving lives!
 
 1. Call the leader's mobile.
@@ -18,18 +20,18 @@ WHAT TO DO AT THE DEADLINE TIME - Do not delay in saving lives!
     c. For all other areas it will be the POLICE
 5. Tell them who you are and why you are calling:
 
-> My name is ............ and I am calling from ............ a person
-> called .................. who is alone/leading a group of people has
-> gone hiking/climbing and they left a some information with me about exactly where
-> they were going and at what time they expected to be back. 
-> I have just tried calling them on their mobile phone and received no answer.
-> If they still had not returned by the DEADLINE TIME they asked me to
-> call you for help.
+    My name is ............ and I am calling from ............ a person
+    called .................. who is alone/leading a group of people has
+    gone hiking/climbing and they left a some information with me about exactly where
+    they were going and at what time they expected to be back. 
+    I have just tried calling them on their mobile phone and received no answer.
+    If they still had not returned by the DEADLINE TIME they asked me to
+    call you for help.
 
 6. The emergency operator will then confirm what you have just told them and probably ask for the details on the card. If they do not, tell them again:
 
-> I have a card that they left with their names, mobile numbers
-> and planned journey, what would you like me to do with this?
+   I have a card that they left with their names, mobile numbers
+   and planned journey, what would you like me to do with this?
 
 Well done, your prompt action may have saved their lives!
 `;
