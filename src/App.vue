@@ -60,6 +60,13 @@ const fields: Ref<Array<Field>> = ref([
     displayType: 'textarea'
   },
   {
+    id: 'notes',
+    friendlyName: 'Notes',
+    value: '',
+    displayType: 'textarea',
+    placeholder: 'Any other information that may be useful.'
+  },
+  {
     id: 'fromEmail',
     friendlyName: 'From email',
     value: '',
