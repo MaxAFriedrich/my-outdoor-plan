@@ -12,7 +12,7 @@ export type Field = {
 export const fields: Ref<Array<Field>> = ref([
     {
         id: 'deadline',
-        friendlyName: 'Deadline Time',
+        friendlyName: '**DEADLINE TIME**',
         value: new Date().toISOString().substring(0, 16),
         displayType: 'datetime-local'
     },
