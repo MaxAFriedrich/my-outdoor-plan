@@ -74,7 +74,7 @@ input {
     max-width: 40ch;
 }
 
-.form{
+.form {
     display: flex;
     flex-direction: column;
 }
@@ -90,6 +90,16 @@ input {
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.internal {
+    background: var(--bg-highlight);
+    padding: 0.3rem;
+}
+
+.internal input, .internal textarea {
+    background: inherit;
+    border: var(--color) 2px solid;
 }
 
 

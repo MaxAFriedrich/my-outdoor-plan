@@ -9,6 +9,7 @@ type Field = {
   value: string,
   displayType: string,
   placeholder?: string,
+  isInternal?: boolean
 }
 
 const fields: Ref<Array<Field>> = ref([
@@ -58,6 +59,28 @@ const fields: Ref<Array<Field>> = ref([
     value: 'First aid kit, map/compass, and shelter being carried.',
     displayType: 'textarea'
   },
+  {
+    id: 'fromEmail',
+    friendlyName: 'From email',
+    value: '',
+    displayType: 'email',
+    isInternal: true
+  },
+  {
+    id: 'toEmails',
+    friendlyName: 'To emails',
+    value: '',
+    displayType: 'textarea',
+    placeholder: 'Emails to send this to route plan to.',
+    isInternal: true
+  },
+  {
+    id: 'subject',
+    friendlyName: 'Email Subject',
+    value: 'Route Plan',
+    displayType: 'text',
+    isInternal: true
+  }
 ]);
 
 fields.value.forEach(field => {
@@ -75,7 +98,18 @@ watch(fields, () => {
 
 
 function generateText() {
-  return fields.value.map(field => `${field.friendlyName}: ${field.value}`).join('\n');
+  const start = "Hi,\n\nI am going on a walk and I would like you to have this information in case I don't return by the deadline.\n\nI will send you a message once I am back to let you know that I am safe.\n\n";
+  const end = "\n\n";
+  return start + fields.value.filter(
+      field => !field.isInternal
+  ).map(
+      (field) => {
+        if (field.id === 'eta' || field.id === 'deadline') {
+          return `${field.friendlyName}: ${new Date(field.value).toLocaleString()}`
+        }
+        return `${field.friendlyName}: ${field.value}`
+      }
+  ).join('\n') + end;
 }
 
 function reset() {
@@ -95,9 +129,19 @@ function print() {
 }
 
 function copy() {
-  let text = generateText();
+  const text = generateText();
   navigator.clipboard.writeText(text);
   notify("Copied to clipboard");
+}
+
+function getField(id: string) {
+  return fields.value.find(field => field.id === id);
+}
+
+function sendEmail() {
+  const text = encodeURIComponent(generateText());
+  const url = `mailto:${getField('fromEmail')?.value}?bcc=${getField('toEmails')?.value}&subject=${getField('subject')?.value}&body=${text}`;
+  window.open(url);
 }
 
 function getUrl() {
@@ -125,7 +169,7 @@ function isShort(field: Field) {
   <p>A quick way to create a note to leave with someone you trust for them to give to emergency services when something
     goes wrong in the outdoors.</p>
   <div class="form">
-    <div v-for="field in fields" :key="field.id" :class="{property: isShort(field)}">
+    <div v-for="field in fields" :key="field.id" :class="{property: isShort(field), internal: field.isInternal}">
       <label :for="field.id">{{ field.friendlyName }}</label>
       <input v-if="isShort(field)" :type="field.displayType" :id="field.id" v-model="field.value"
              :placeholder="field.placeholder">
@@ -135,6 +179,7 @@ function isShort(field: Field) {
   <div class="tools">
     <button @click="print">Print</button>
     <button @click="copy">Copy to Clipboard</button>
+    <button @click="sendEmail">Send as Email</button>
     <button @click="getUrl">Copy Current URL</button>
     <button @click="reset">Reset</button>
   </div>
