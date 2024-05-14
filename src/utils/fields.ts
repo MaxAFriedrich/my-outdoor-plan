@@ -1,4 +1,4 @@
-import {ref, type Ref} from "vue";
+import {ref, type Ref, watch} from "vue";
 
 export type Field = {
     id: string,
@@ -86,3 +86,16 @@ export const fields: Ref<Array<Field>> = ref([
         isInternal: true
     }
 ]);
+
+fields.value.forEach(field => {
+    let url = new URL(window.location.href);
+    field.value = url.searchParams.get(field.id) || field.value;
+});
+
+watch(fields, () => {
+    let url = new URL(window.location.href);
+    fields.value.forEach(field => {
+        url.searchParams.set(field.id, field.value);
+    });
+    window.history.pushState({}, '', url);
+});

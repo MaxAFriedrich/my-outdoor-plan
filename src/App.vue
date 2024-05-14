@@ -1,23 +1,8 @@
 <script lang="ts" setup>
-import {watch} from 'vue';
 import Usage from "@/components/Usage.vue";
 import Tools from "@/components/Tools.vue";
 import {type Field, fields} from "@/utils/fields";
 import {notification} from "@/utils/utils";
-
-
-fields.value.forEach(field => {
-  let url = new URL(window.location.href);
-  field.value = url.searchParams.get(field.id) || field.value;
-});
-
-watch(fields, () => {
-  let url = new URL(window.location.href);
-  fields.value.forEach(field => {
-    url.searchParams.set(field.id, field.value);
-  });
-  window.history.pushState({}, '', url);
-});
 
 
 function isShort(field: Field) {
